@@ -3,7 +3,7 @@ const {
   successResponseMsg,
   errResponseMsg
 } = require('../../../utils/response');
-const { bookService } = require('../service');
+const { bookService } = require('../services');
 
 exports.createBook = async (req, res) => {
   const { body } = req;

@@ -1,6 +1,6 @@
 const { randomUUID: uuidv4 } = require('crypto');
 const { serviceResponse } = require('../../../utils');
-const { authorRepository, bookRepository } = require('../repository');
+const { authorRepository, bookRepository } = require('../repositories');
 
 class authorService {
   static async create(bookId, body) {

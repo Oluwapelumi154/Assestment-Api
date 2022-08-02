@@ -38,7 +38,6 @@ componentsSubdir.forEach((dirpath) => {
 
 files.forEach((file) => {
   const model = require(file)(sequelize, Sequelize.DataTypes);
-  console.log(model.name);
   db[model.name] = model;
 });
 Object.keys(db).forEach((modelName) => {

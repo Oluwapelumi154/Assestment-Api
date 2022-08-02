@@ -1,5 +1,5 @@
 const { errorResponseMsg, successResponseMsg } = require('../../../utils');
-const { authorService } = require('../service');
+const { authorService } = require('../services');
 exports.createAuthor = async (req, res) => {
   const { body, params } = req;
   const { status, status_code, message, data } = await authorService.create(
