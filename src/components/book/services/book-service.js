@@ -90,6 +90,7 @@ class bookService {
 
   static async search(query) {
     try {
+      console.log(query.name.replace(/['"]+/g, ''));
       const book = await bookRepository.searchByName(query.name);
       if (!book) {
         return serviceResponse('fail', 400, 'Invalid book Search', book);
