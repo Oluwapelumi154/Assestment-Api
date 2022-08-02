@@ -16,7 +16,7 @@ exports.successResponseMsg = (res, status, status_code, message, data) => {
   });
 };
 
-exports.errResponseMsg = (res, status, status_code, message) => {
+exports.errorResponseMsg = (res, status, status_code, message) => {
   res.status(status_code).json({
     status,
     status_code,
