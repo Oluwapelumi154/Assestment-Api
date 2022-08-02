@@ -20,6 +20,7 @@ class bookService {
         book: newBook
       });
     } catch (err) {
+      console.log(err);
       return serviceResponse('fail', 500, 'Internal Server Error');
     }
   }
@@ -89,61 +90,13 @@ class bookService {
   }
 
   static async search(query) {
-    // const data = query.name.substring(1).slice(0, -1);
-    // console.log(data);
-
     try {
       const book = await bookRepository.searchByName(query.name);
-
       if (!book) {
         return serviceResponse('fail', 400, 'Invalid book Search', book);
       }
+      return serviceResponse('success', 200, 'Successfully Searched Bok');
     } catch (err) {
-      return serviceResponse('fail', 500, 'Internal Server Error');
-    }
-  }
-
-  static async createAuthor(body) {
-    try {
-      const authorExist = await bookRepository.findAuthorByName(body.name);
-      if (authorExist) {
-        return serviceResponse('fail', 400, 'Author Already Exist');
-      }
-      const authorId = uuidv4();
-      const author = {
-        authorId,
-        name: body.name
-      };
-      const newAuthor = await bookRepository.createAuthor(author);
-      return serviceResponse('success', 201, 'Successfully Created an Author', {
-        author: newAuthor
-      });
-    } catch (err) {
-      console.log(err);
-      return serviceResponse('fail', 500, 'Internal Server Error');
-    }
-  }
-
-  static async createBookAuthors(body) {
-    try {
-      const book = await bookRepository.findById(body.bookId);
-      if (!book) {
-        return serviceResponse('fail', 400, 'Invalid bookId');
-      }
-      const data = {
-        authorId: body.authorId,
-        bookId: body.bookId
-      };
-      const newBookAuthors = await bookRepository.createBookAuthors(data);
-      console.log(newBookAuthors, 'authors');
-      return serviceResponse(
-        'success',
-        201,
-        'Successfully Added an Author',
-        {}
-      );
-    } catch (err) {
-      console.log(err);
       return serviceResponse('fail', 500, 'Internal Server Error');
     }
   }

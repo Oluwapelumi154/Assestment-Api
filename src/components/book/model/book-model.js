@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const book = sequelize.define('Book', {
+  const Book = sequelize.define('Book', {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -36,12 +36,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   });
-  book.associate = (models) => {
-    book.belongsToMany(models.Author, {
-      as: 'authors',
-      through: models.AuthorBook,
-      foreignKey: 'bookId'
+  Book.associate = (models) => {
+    Book.hasMany(models.Author, {
+      foreignKey: 'bookId',
+      onDelete: 'CASCADE'
     });
   };
-  return book;
+  return Book;
 };

@@ -12,7 +12,7 @@ exports.createBook = async (req, res) => {
     return successResponseMsg(res, status, status_code, message, data);
   }
   if (status_code >= 400) {
-    return errResponseMsg(res, status, message, status_code);
+    return errResponseMsg(res, status, status_code, message);
   }
 };
 
@@ -22,7 +22,7 @@ exports.getAllBooks = async (req, res) => {
     return successResponseMsg(res, status, status_code, message, data);
   }
   if (status_code >= 400) {
-    return errResponseMsg(res, status, message, status_code);
+    return errResponseMsg(res, status, status_code, message);
   }
 };
 
@@ -72,31 +72,6 @@ exports.searchBook = async (req, res) => {
     query
   );
   if (status_code === 200) {
-    return successResponseMsg(res, status, status_code, message, data);
-  }
-  if (status_code >= 400) {
-    return errResponseMsg(res, status, status_code, message);
-  }
-};
-
-exports.createAuthor = async (req, res) => {
-  const { body } = req;
-  const { status, status_code, message, data } = await bookService.createAuthor(
-    body
-  );
-  if (status_code === 201) {
-    return successResponseMsg(res, status, status_code, message, data);
-  }
-  if (status_code >= 400) {
-    return errResponseMsg(res, status, status_code, message);
-  }
-};
-
-exports.addBookAuthors = async (req, res) => {
-  const { body } = req;
-  const { status, status_code, message, data } =
-    await bookService.createBookAuthors(body);
-  if (status_code === 201) {
     return successResponseMsg(res, status, status_code, message, data);
   }
   if (status_code >= 400) {

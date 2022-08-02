@@ -10,17 +10,19 @@ exports.create = async (data) => {
 
 exports.findById = async (id) => {
   const book = await models.Book.findOne({
-    where: { id }
+    where: { id },
+    include: 'Authors'
   });
-
   return book;
 };
 exports.findAll = async () => {
-  const book = await models.Book.findAll();
+  const book = await models.Book.findAll({
+    include: 'Authors'
+  });
   return book;
 };
 
-exports.deletById = async (id) => {
+exports.deleteById = async (id) => {
   const book = await models.Book.destroy({
     where: { id }
   });
@@ -37,19 +39,4 @@ exports.findByName = async (name) => {
 exports.searchByName = async (name) => {
   const book = await axios.get(`${URL}/books?name=${name}`);
   return book;
-};
-
-exports.createAuthor = async (data) => {
-  const author = await models.Author.create(data);
-  return author;
-};
-
-exports.findAuthorByName = async (name) => {
-  const author = await models.Author.findOne({ where: { name } });
-  return author;
-};
-
-exports.createBookAuthors = async (data) => {
-  const author = await models.AuthorBook.create(data);
-  return author;
 };

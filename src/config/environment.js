@@ -4,7 +4,7 @@ dotenv.config({ path: '../../.env' });
 module.exports = {
   development: {
     username: 'root',
-    password: process.env.DB_PASSWORD,
+    password: process.env.DB_PASSWORD || 'Oluwapelumi2002',
     database: 'assesment',
     host: process.env.DB_HOST,
     dialect: 'mysql',

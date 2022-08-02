@@ -9,7 +9,7 @@ const app = require('./src/app');
 const server = http.createServer(app);
 const PORT = 8080;
 server.listen(PORT, () => {
-  db.sequelize.sync().then(() => {
+  db.sequelize.sync({ force: true }).then(() => {
     console.log(`Application running on port ${PORT}`);
   });
 });
