@@ -37,7 +37,6 @@ class bookService {
         book
       );
     } catch (err) {
-      console.log(err);
       return serviceResponse('fail', 500, 'Internal Server Error');
     }
   }
@@ -78,7 +77,7 @@ class bookService {
 
   static async deleteById(bookId) {
     try {
-      const book = await bookRepository.deletById(bookId);
+      const book = await bookRepository.deleteById(bookId);
       if (!book) {
         return serviceResponse('fail', 400, 'Invalid bookId');
       }
@@ -90,7 +89,6 @@ class bookService {
 
   static async search(query) {
     try {
-      console.log(query.name.replace(/['"]+/g, ''));
       const book = await bookRepository.searchByName(query.name);
       if (!book) {
         return serviceResponse('fail', 400, 'Invalid book Search', book);

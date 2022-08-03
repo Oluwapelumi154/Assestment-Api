@@ -1,26 +1,26 @@
-const ENV = require('dotenv').config().parsed;
+require('dotenv').config({ path: '../../.env' });
 
 module.exports = {
   development: {
-    username: ENV.DB_USERNAME,
-    password: ENV.DB_PASSWORD,
-    database: ENV.DB_NAME,
-    host: ENV.DB_HOST,
-    dialect: ENV.DB_DIALECT,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT || 'mysql',
     logging: false
   },
   test: {
-    username: ENV.DB_USERNAME,
-    password: ENV.DB_PASSWORD,
-    database: ENV.DB_NAME,
-    host: ENV.DB_HOST,
-    dialect: ENV.DB_DIALECT
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT
   },
   production: {
-    username: ENV.DB_USERNAME,
-    password: ENV.DB_PASSWORD,
-    database: ENV.DB_NAME,
-    host: ENV.DB_HOST,
-    dialect: ENV.DB_DIALECT
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT
   }
 };

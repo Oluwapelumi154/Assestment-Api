@@ -1,8 +1,10 @@
+require('dotenv').config({ path: '../../.env' });
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 
 const env = process.env.NODE_ENV || 'development';
+
 const config = require('./environment')[env];
 
 const componentsDir = path.join(__dirname, '../components');
@@ -45,7 +47,6 @@ Object.keys(db).forEach((modelName) => {
     db[modelName].associate(db);
   }
 });
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 module.exports = db;

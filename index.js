@@ -16,7 +16,7 @@ const normalizePort = (val) => {
   return false;
 };
 const server = http.createServer(app);
-const PORT = normalizePort(process.env.PORT) || 8000;
+const PORT = normalizePort(process.env.PORT) || 8080;
 
 server.on('listening', () => {
   const address = server.address();

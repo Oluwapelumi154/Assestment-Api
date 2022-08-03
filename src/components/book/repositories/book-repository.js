@@ -1,6 +1,8 @@
+require('dotenv').config({ path: `../../../../.env` });
+
+const { URL } = process.env;
 const axios = require('axios');
-const { URL } = require('dotenv').config().parsed;
-const models = require('../../../config').db;
+const models = require('../../../config').database;
 
 exports.create = async (data) => {
   const book = await models.Book.create(data);

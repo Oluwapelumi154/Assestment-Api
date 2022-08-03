@@ -1,4 +1,4 @@
-const models = require('../../../config').db;
+const models = require('../../../config').database;
 
 exports.create = async (data) => {
   const author = await models.Author.create(data);
