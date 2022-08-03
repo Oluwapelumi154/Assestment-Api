@@ -1,8 +1,8 @@
 const { randomUUID: uuidv4 } = require('crypto');
 const { serviceResponse } = require('../../../utils');
-const { authorRepository, bookRepository } = require('../repositories');
+const { userRepository, bookRepository } = require('../repositories');
 
-class authorService {
+class userService {
   static async create(bookId, body) {
     try {
       const book = await bookRepository.findById(bookId);
@@ -16,7 +16,7 @@ class authorService {
         authorId
       };
 
-      const authorExist = await authorRepository.findByName(body.name);
+      const authorExist = await userRepository.findByName(body.name);
       if (authorExist) {
         return serviceResponse(
           'fail',
@@ -24,15 +24,14 @@ class authorService {
           'Author Already Exist on this book'
         );
       }
-      const newAuthor = await authorRepository.create(author);
+      const newAuthor = await userRepository.create(author);
       return serviceResponse('success', 201, 'Successfully Added an Author', {
         author: newAuthor
       });
     } catch (err) {
-      console.log(err);
       return serviceResponse('fail', 500, 'Internal Server Error');
     }
   }
 }
 
-module.exports = authorService;
+module.exports = userService;
