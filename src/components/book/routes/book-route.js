@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { validate } = require('../../../middlewares');
-const { bookController, authorController } = require('../controllers');
+const { bookController, userController } = require('../controllers');
 const { bookToCreate, bookId, authorToCreate } = require('../schemas');
 
 router.get('/external-books', bookController.searchBook);
@@ -13,7 +13,7 @@ router.post(
   '/books/:bookId/author',
   validate(bookId()),
   validate(authorToCreate()),
-  authorController.createAuthor
+  userController.createAuthor
 );
 
 module.exports = router;

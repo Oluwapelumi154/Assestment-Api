@@ -5,7 +5,7 @@
     "prettier/prettier": "off",
     "no-unused-vars": "warn",
     "no-return-await": "error",
-    "no-console": "warn",
+    "no-console": "off",
     "func-names": "off",
     "no-process-exit": "warn",
     "arrow-spacing": "warn",
@@ -13,6 +13,8 @@
     "lines-between-class-members": "error",
     "node/no-unsupported-features/es-syntax": "off",
     "consistent-return": "off",
-    "import/no-dynamic-require": "false"
+    "import/no-dynamic-require": 0,
+    "no-restricted-globals": "off",
+    "global-require": "off"
   }
 }

@@ -1,7 +1,7 @@
 const bookController = require('./book-controller');
-const authorController = require('./author-controller');
+const userController = require('./user-controller');
 
 module.exports = Object.freeze({
   bookController,
-  authorController
+  userController
 });

@@ -1,4 +1,5 @@
-const db = require('./database');
+const database = require('./database');
+
 module.exports = Object.freeze({
-  db
+  database
 });

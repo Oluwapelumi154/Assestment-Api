@@ -1,5 +1,5 @@
 const http = require('http');
-const { db } = require('./src/config');
+const { database } = require('./src/config');
 const app = require('./src/app');
 /**
  * Normalize a port into a number, string or false
@@ -16,7 +16,7 @@ const normalizePort = (val) => {
   return false;
 };
 const server = http.createServer(app);
-const PORT = normalizePort(process.env.PORT);
+const PORT = normalizePort(process.env.PORT) || 8000;
 
 server.on('listening', () => {
   const address = server.address();
@@ -24,7 +24,7 @@ server.on('listening', () => {
   const log = '[?] Connecting ...';
   console.log(`listening on ${bind}`);
   console.log(log);
-  db.sequelize.sync().then(() => {
+  database.sequelize.sync().then(() => {
     console.log(`Successfully Established Connection to the Database`);
   });
 });

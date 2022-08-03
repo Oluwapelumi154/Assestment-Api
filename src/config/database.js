@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+
 const env = process.env.NODE_ENV || 'development';
-const dotenv = require('dotenv');
-dotenv.config({ path: '../../.env' });
-const config = require(__dirname + '/environment.js')[env];
+const config = require('./environment')[env];
+
 const componentsDir = path.join(__dirname, '../components');
 const db = {};
 const sequelize = new Sequelize(

@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 const {
   successResponseMsg,
-  errResponseMsg
+  errorResponseMsg
 } = require('../../../utils/response');
 const { bookService } = require('../services');
 
@@ -12,7 +12,7 @@ exports.createBook = async (req, res) => {
     return successResponseMsg(res, status, status_code, message, data);
   }
   if (status_code >= 400) {
-    return errResponseMsg(res, status, status_code, message);
+    return errorResponseMsg(res, status, status_code, message);
   }
 };
 
@@ -22,7 +22,7 @@ exports.getAllBooks = async (req, res) => {
     return successResponseMsg(res, status, status_code, message, data);
   }
   if (status_code >= 400) {
-    return errResponseMsg(res, status, status_code, message);
+    return errorResponseMsg(res, status, status_code, message);
   }
 };
 
@@ -35,7 +35,7 @@ exports.getBook = async (req, res) => {
     return successResponseMsg(res, status, status_code, message, data);
   }
   if (status_code >= 400) {
-    return errResponseMsg(res, status, status_code, message);
+    return errorResponseMsg(res, status, status_code, message);
   }
 };
 
@@ -49,7 +49,7 @@ exports.updateBook = async (req, res) => {
     return successResponseMsg(res, status, status_code, message, data);
   }
   if (status_code >= 400) {
-    return errResponseMsg(res, status, status_code, message);
+    return errorResponseMsg(res, status, status_code, message);
   }
 };
 
@@ -62,7 +62,7 @@ exports.deleteBook = async (req, res) => {
     return successResponseMsg(res, status, status_code, message, data);
   }
   if (status_code >= 400) {
-    return errResponseMsg(res, status, status_code, message);
+    return errorResponseMsg(res, status, status_code, message);
   }
 };
 
@@ -75,6 +75,6 @@ exports.searchBook = async (req, res) => {
     return successResponseMsg(res, status, status_code, message, data);
   }
   if (status_code >= 400) {
-    return errResponseMsg(res, status, status_code, message);
+    return errorResponseMsg(res, status, status_code, message);
   }
 };
